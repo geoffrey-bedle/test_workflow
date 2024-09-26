@@ -28,22 +28,20 @@ jobs:
 
       - name: Connect to Server and Run Commands
         run: |
-          REPO_NAME=${{ github.event.repository.name }}  # Récupération dynamique du nom du dépôt
-
           ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "
             echo \"\$(date) : Connected successfully !\" >> workflow.txt;
 
             # Définir le répertoire du dépôt
-            REPO_DIR=\"\$HOME/\$REPO_NAME\"
+            REPO_NAME=${{ github.event.repository.name }}
+            REPO_DIR=\$HOME/\$REPO_NAME
 
-            # Si le répertoire n'existe pas, on clone le dépôt
-            if [ ! -d \"\$REPO_DIR\" ]; then
+            if [ ! -d \"\$REPO_DIR/.git\" ]; then
               echo \"Cloning repository for the first time...\";
-              git clone git@github.com:geoffrey-bedle/;
+              git clone git@github.com:geoffrey-bedle/\$REPO_NAME \$REPO_DIR;
             else
-              # Sinon, on fait un pull pour mettre à jour le dépôt
-              echo \"Repository \$REPO_NAME exists. Pulling latest changes...\";
-              cd \$REPO_NAME && pwd && git pull origin dev;
+              # Si le répertoire existe, on fait un pull
+              echo \"Repository exists. Pulling latest changes...\";
+              cd \$REPO_DIR && git pull origin main;
             fi
           "
 
