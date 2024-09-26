@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: List Environment Variables
+        run: env
+
       - name: Set up SSH
         run: echo SSH connection from ${{ env.ENV_NAME }} branch !
       
