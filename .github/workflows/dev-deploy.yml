@@ -28,6 +28,6 @@ jobs:
 
       - name: Connect to Server and Run Command
         run: |
-          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "echo -e '\$(date) : Connected successfully ! \n' >> workflow.txt"
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "echo \"\$(date) : Connected successfully !\" >> /path/to/your/workflow.txt"
       
   
