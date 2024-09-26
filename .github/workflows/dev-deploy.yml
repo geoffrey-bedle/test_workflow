@@ -25,16 +25,16 @@ jobs:
 
       - name: Set up SSH
         run: echo SSH connection from ${{ vars.ENV_NAME }} branch !
-      - name: Test
-        run: echo ${{ github.event.repository.name }}
 
       - name: Connect to Server and Run Commands
         run: |
+          REPO_NAME=${{ github.event.repository.name }}
           ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "
             echo \"\$(date) : Connected successfully !\" >> workflow.txt;
+            REPO_DIR=\"/\$REPO_NAME\"
             
             # Si le répertoire .git n'existe pas, on clone le dépôt
-            if [ ! -d \"/${{ github.event.repository.name }}/.git\" ]; then
+            if [ ! -d \"\$REPO_DIR/.git\" ]; then
               echo \"Cloning repository for the first time...\";
               git clone git@github.com:geoffrey-bedle/test_workflow.git;
             else
