@@ -25,6 +25,8 @@ jobs:
 
       - name: Set up SSH
         run: echo SSH connection from ${{ vars.ENV_NAME }} branch !
+      - name: Test
+        run: echo ${{ github.event.repository.name }}
 
       - name: Connect to Server and Run Commands
         run: |
