@@ -41,7 +41,7 @@ jobs:
             else
               # Si le répertoire existe, on fait un pull
               echo \"Repository exists. Pulling latest changes...\";
-              cd \$REPO_DIR && git pull origin main;
+              cd \$REPO_DIR && git pull origin dev;
             fi
           "
 
