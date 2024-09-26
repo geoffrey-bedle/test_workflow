@@ -26,16 +26,20 @@ jobs:
       - name: Set up SSH
         run: echo SSH connection from ${{ vars.ENV_NAME }} branch !
 
-      - name: Connect to Server and Run Command
+      - name: Connect to Server and Run Commands
         run: |
-          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "echo \"\$(date) : Connected successfully !\" >> workflow.txt"
-          # Si le répertoire .git n'existe pas, on clone le dépôt
-            if [ ! -d ".git" ]; then
-              echo "Cloning repository for the first time..."
-              git clone git@github.com:geoffrey-bedle/test_workflow.git ./
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_DOMAIN }} "
+            echo \"\$(date) : Connected successfully !\" >> workflow.txt;
+            
+            # Si le répertoire .git n'existe pas, on clone le dépôt
+            if [ ! -d \".git\" ]; then
+              echo \"Cloning repository for the first time...\";
+              git clone git@github.com:geoffrey-bedle/test_workflow.git ./;
             else
               # Sinon, on fait un pull pour mettre à jour le dépôt
-              echo "Repository exists. Pulling latest changes...
-              git pull origin main
+              echo \"Repository exists. Pulling latest changes...\";
+              git pull origin main;
             fi
+          "
+
   
