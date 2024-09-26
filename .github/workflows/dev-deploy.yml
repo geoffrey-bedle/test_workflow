@@ -13,6 +13,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up SSH
-        run: echo SSH connection from ${{ ENV_NAME }} branch !
+        run: echo SSH connection from ${{ env.ENV_NAME }} branch !
       
   
