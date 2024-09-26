@@ -43,7 +43,7 @@ jobs:
             else
               # Sinon, on fait un pull pour mettre à jour le dépôt
               echo \"Repository exists. Pulling latest changes...\";
-              cd \$REPO_DIR && git pull origin dev;
+              cd \$REPO_DIR && pwd && git pull origin dev;
             fi
           "
 
