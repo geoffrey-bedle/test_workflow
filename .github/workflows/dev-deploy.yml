@@ -34,7 +34,7 @@ jobs:
             # Si le répertoire .git n'existe pas, on clone le dépôt
             if [ ! -d \".git\" ]; then
               echo \"Cloning repository for the first time...\";
-              git clone git@github.com:geoffrey-bedle/test_workflow.git ./;
+              git clone git@github.com:geoffrey-bedle/test_workflow.git;
             else
               # Sinon, on fait un pull pour mettre à jour le dépôt
               echo \"Repository exists. Pulling latest changes...\";
