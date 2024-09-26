@@ -42,7 +42,7 @@ jobs:
               git clone git@github.com:geoffrey-bedle/\$REPO_NAME \$REPO_DIR;
             else
               # Sinon, on fait un pull pour mettre à jour le dépôt
-              echo \"Repository exists. Pulling latest changes...\";
+              echo \"Repository \$REPO_DIR exists. Pulling latest changes...\";
               cd \$REPO_DIR && pwd && git pull origin dev;
             fi
           "
