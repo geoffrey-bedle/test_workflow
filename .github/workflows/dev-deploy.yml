@@ -37,7 +37,7 @@ jobs:
             REPO_DIR=\"\$HOME/\$REPO_NAME\"
 
             # Si le répertoire n'existe pas, on clone le dépôt
-            if [ ! -d \"\REPO_DIR\" ]; then
+            if [ ! -d \"\$REPO_DIR\" ]; then
               echo \"Cloning repository for the first time...\";
               git clone git@github.com:geoffrey-bedle/;
             else
